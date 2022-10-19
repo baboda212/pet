@@ -1,0 +1,97 @@
+/* stlye.css */
+/* 스타일 변수 지정 */
+:root{
+    /* 전역변수 지정,선언만 하고 자식요소들에게 상속하겠다.*/
+    --main-color: #1ABC9C;/* 사용은 var(--변수명) */
+   /*  font-size: 1em; 여기에 선언하면 이 값이 절대적 우위에 잡혀서 수정이 힘듬(선언은 가능하나 나중에 불편) 함부로 건드리지 말라라는 의미*/
+}
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;/* 얘는 전체(전체를 선택해서)에 모두 하나하나 값을 넣어주겠다. 그래서 자식요소들에게 영향을 받지 않는다. 상속은 되지 않는다. */
+}
+ul{
+    list-style-type: none;
+} /* 여기까지가 기본 값 늘 이렇게 설정해줘1!!! */
+
+
+body{
+    font-family:  'Roboto', '맑은고딕', sans-serif;/* 얘는 상속이 됨 */
+}
+header{
+    background: #cccccc; 
+    box-shadow: 0 4px 4px rgba(0,0,0, 0.25); 
+}
+header h1{
+    background: var(--main-color);
+    color: #fff;
+    padding: 11px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+}
+header > nav{
+    display: flex; 
+}
+header > nav > a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    /* outline: 1px solid #000; */
+    padding: 10px;
+    flex: 1;/* 이거 대신에 width:33.33%로 잡아도 됨 */
+    text-align: center;
+    background: var(--main-color);
+}
+/* header > nav > a:hover{
+    border-bottom: 3px solid #fff;
+} 얘는 PC전용임 그래서 모바일에서는 해도 의미가 없음 */
+header > nav > a:hover,
+header > nav > a:active{
+    border-bottom: 3px solid #fff;
+}
+main{
+    padding: 20px 15px;
+}
+main h2{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 20px;
+}
+main ul li img{
+    width: 100%;
+}
+main .pet-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+main .pet-list .item{
+    /* 칼럼의 크기 = 칼럼 크기-(여백 / 칼럼수) */
+    width: calc(50% - (15px / 2));
+    margin-right: 15px;
+    margin-bottom: 20px;
+}
+main .pet-list .item:nth-child(2n){
+    /* 우측마진을 제거하기 위해서 짝수 콘텐츠 마진을 없앰 */
+    margin-right: 0px;
+}
+main .pet-list .item .name{
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 10px;
+    text-align: center; 
+}
+/* 사진에 이름 배치 */
+main .pet-list .item{
+    position: relative;
+    /* outline: 1px solid #000; */
+}
+main .pet-list .item .name{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+main .pet-list .item img{
+    display: flex;
+}
